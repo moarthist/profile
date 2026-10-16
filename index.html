@@ -3,466 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahmoud MOHAMMADI | Museology, Scenography and Exhibition Design</title>
+    <title>Mahmoud Mohammadi — Portfolio &amp; CV</title>
+    <meta name="description" content="Mahmoud Mohammadi — museology, scenography and exhibition design. Art historian and translator based in Paris.">
+    <meta name="theme-color" content="#f5f2ec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Mahmoud Mohammadi — Portfolio &amp; CV">
+    <meta property="og:description" content="Museology, scenography and exhibition design.">
+    <meta property="og:image" content="https://moarthist.github.io/profile/portrait.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 60V30a24 24 0 0 1 48 0v30z' fill='%232b4c9b'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+        try {
+            var t = localStorage.getItem('theme');
+            if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+    </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#languages">Languages</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div>
-        </div>
-    </nav>
+    <div class="progress" aria-hidden="true"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <div class="profile-banner">
-                <div class="profile-image">
-                    <img src="profile.jpeg" alt="Mahmoud Mohammadi's Profile Picture">
+    <header class="topbar">
+        <a href="#top" class="mark" aria-label="Back to top">M<span>.</span>M</a>
+        <nav class="nav" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z"/></svg>
+        </button>
+    </header>
+
+    <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-text">
+                <p class="eyebrow load" style="--d:0">Portfolio &amp; Curriculum Vitae</p>
+                <h1 class="name">
+                    <span class="line"><span class="load" style="--d:1">Mahmoud</span></span>
+                    <span class="line"><span class="load italic" style="--d:2">Mohammadi</span></span>
+                </h1>
+                <p class="lede load" style="--d:3">Museology, scenography and exhibition design. Art historian and translator working between Iranian visual culture and the contemporary museum.</p>
+                <ul class="facts load" style="--d:4">
+                    <li><span>Based in</span>Paris, France</li>
+                    <li><span>Currently</span>MA Oriental Studies, Sorbonne Nouvelle</li>
+                    <li><span>Languages</span>Persian · English · French · Italian</li>
+                </ul>
+                <div class="links load" style="--d:5">
+                    <a href="#contact" class="btn">Get in touch</a>
+                    <a href="https://www.linkedin.com/in/mahmoud-mohammadi/" target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a>
+                    <a href="https://github.com/moarthist" target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a>
                 </div>
             </div>
-            <h1 class="typing-text">Hello, I'm Mahmoud MOHAMMADI</h1>
-            <p class="subtitle">Museology, Scenography and Exhibition Design</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn primary">Get in Touch</a>
-                <a href="https://github.com/moarthist" class="btn secondary" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+            <figure class="portrait">
+                <div class="arch">
+                    <img src="portrait.jpg" width="799" height="863" alt="Portrait of Mahmoud Mohammadi" fetchpriority="high">
+                </div>
+                <figcaption><span>Fig. 1</span> Mahmoud Mohammadi, 2026</figcaption>
+            </figure>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="block">
+            <header class="block-head reveal">
+                <span class="num">01</span>
+                <h2>About</h2>
+            </header>
+            <div class="block-body">
+                <p class="statement reveal">I work where <em>art history, translation and the museum</em> meet — how objects are read, described and staged for a public.</p>
+                <p class="reveal">After a Bachelor's degree in English Translation, I pursued a Master's in Iranian Art History at the Isfahan University of Art, where I conducted an in-depth transtextual study of the Kalamkari textiles of India and Iran. I then completed a Master's in Visual Arts, Museology and Curatorship at the University of Bologna, focusing on virtual exhibitions and museums, and in September 2026 began a Master's in Oriental Studies at Sorbonne Nouvelle University in Paris.</p>
+                <p class="reveal">My research explores how digital technology can make cultural heritage more accessible, better preserved and more engaging — and how exhibition design can turn historical material into a story people want to follow.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 data-aos="fade-up">About Me</h2>
-            <div class="about-content" data-aos="fade-up">
-                <div class="about-text">
-                    <p>I have a diverse academic background that spans translation, art history, and visual studies, with a strong focus on research and cultural heritage. After earning my Bachelor's degree in English Translation, I pursued a Master's in Iranian Art History at the Isfahan University of Art, where I conducted an in-depth transtextual study on Kalamkari textiles of India and Iran. I then completed a Master's in Visual Arts, Museology and Curatorship at the University of Bologna, with a particular focus on virtual exhibitions and museums, and in September 2026 I began a Master's in Oriental Studies at Sorbonne Nouvelle University in Paris. My studies explore the intersection of digital technology and cultural heritage, examining how virtual spaces can enhance accessibility, preservation, and engagement with art and historical artifacts. Through my research and academic work, I aim to contribute to the evolving landscape of museum curation and digital storytelling.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/mahmoud-mohammadi/" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/moarthist" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education and Training Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 data-aos="fade-up">Education and Training</h2>
-            <div class="education-content" data-aos="fade-up">
-                <div class="education-item">
-                    <h3>Master in Oriental Studies</h3>
-                    <p class="institution">Sorbonne Nouvelle University | Paris, France</p>
-                    <p class="period">September 2026 – July 2027</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Master in Visual Arts – Arts, Museology and Curatorship</h3>
-                    <p class="institution">University of Bologna | Bologna, Italy</p>
-                    <p class="period">September 2023 – October 2026</p>
-                    <p class="website"><a href="http://www.unibo.it" target="_blank" rel="noopener noreferrer">www.unibo.it</a></p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Master in Iranian Art History</h3>
-                    <p class="institution">Isfahan University of Art | Isfahan, Iran</p>
-                    <p class="period">September 2018 – February 14, 2023</p>
-                    <p class="note">Final grade: 17.18/20</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Bachelor in English Translation</h3>
-                    <p class="institution">University of Isfahan | Isfahan, Iran</p>
-                    <p class="period">September 2015 – February 28, 2019</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inter-University Mobility Section -->
-    <section id="mobility" class="education">
-        <div class="container">
-            <h2 data-aos="fade-up">Inter-University Mobility</h2>
-            <div class="education-content" data-aos="fade-up">
-                <div class="education-item">
-                    <h3>Erasmus+ (Study and Research)</h3>
-                    <p class="institution">Paris 8 University | Saint-Denis, France</p>
-                    <p class="period">September 2025 – February 2026</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Erasmus+ (Study)</h3>
-                    <p class="institution">University of Liège | Liège, Belgium</p>
-                    <p class="period">September 2024 – January 2025</p>
-                    <p class="website"><a href="http://www.uliege.be" target="_blank" rel="noopener noreferrer">www.uliege.be</a></p>
-                </div>
-
-                <div class="education-item">
-                    <h3>ERUA “Skills for the Future” Intensive Course</h3>
-                    <p class="institution">SWPS University | Poznań, Poland</p>
-                    <p class="period">November 2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 data-aos="fade-up">Experience</h2>
-            <div class="experience-content" data-aos="fade-up">
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>Art Mediator (150-hour internship)</h3>
-                        <span class="period">October 2025</span>
-                    </div>
-                    <div class="experience-body">
-                        <p class="company">22,48 m² – Contemporary Art Gallery | Romainville, France</p>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>Mediator, Grand 8 Festival (90-hour contract)</h3>
-                        <span class="period">September 2025</span>
-                    </div>
-                    <div class="experience-body">
-                        <p class="company">Paris 8 University Vincennes-Saint-Denis | Paris, France</p>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>Library Assistant (150-hour contract)</h3>
-                        <span class="period">September 2024</span>
-                    </div>
-                    <div class="experience-body">
-                        <p class="company">University of Bologna – Library of the Department of Foreign Languages | Bologna, Italy</p>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>Founder</h3>
-                        <span class="period">Present</span>
-                    </div>
-                    <div class="experience-body">
-                        <p class="company">Arthistorio</p>
-                        <p class="description">A platform to share knowledge in art history.</p>
-                        <a href="https://www.arthistorio.com" target="_blank" rel="noopener noreferrer" class="website-link">
-                            <i class="fas fa-globe"></i> www.arthistorio.com
-                        </a>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <h3>Layout and Typesetting</h3>
-                        <span class="period">December 2021</span>
-                    </div>
-                    <div class="experience-body">
-                        <p class="company">Freelance</p>
-                        <div class="publications">
-                            <div class="publication">
-                                <p class="title">The Unification of the Phoenix and the Dragon</p>
-                                <p class="isbn">ISBN: 978-3-347-51438-6</p>
-                                <a href="https://shop.tredition.com/booktitle/The_Unification_of_the_Phoenix_and_the_Dragon/W-467-086-390" target="_blank" rel="noopener noreferrer" class="publication-link">
-                                    <i class="fas fa-external-link-alt"></i> View Publication
-                                </a>
-                            </div>
-                            <div class="publication">
-                                <p class="title">Adventures of Two Captains; Postmodernism Dialectic in: Literature and International Relations</p>
-                                <p class="isbn">ISBN: 978-3-347-29585-8</p>
-                                <a href="https://shop.tredition.com/booktitle/Adventures_of_Two_Captains_Postmodernism_Dialectic_in__Literature_and_International_Relations/W-950-182-253" target="_blank" rel="noopener noreferrer" class="publication-link">
-                                    <i class="fas fa-external-link-alt"></i> View Publication
-                                </a>
-                            </div>
-                            <div class="publication">
-                                <p class="title">A Melody called Africa, Una Melodia Chiamata</p>
-                                <p class="isbn">ISBN: 978-3-347-60095-9</p>
-                                <a href="https://shop.tredition.com/booktitle/A_Melody_Called_Africa_/W-566-244-034" target="_blank" rel="noopener noreferrer" class="publication-link">
-                                    <i class="fas fa-external-link-alt"></i> View Publication
-                                </a>
-                            </div>
-                            <div class="publication">
-                                <p class="title">Floating in the Hail</p>
-                                <p class="isbn">ISBN: 978-3-347-54785-8</p>
-                                <a href="https://shop.tredition.com/booktitle/Floating_in_the_Hail/W-112-697-287" target="_blank" rel="noopener noreferrer" class="publication-link">
-                                    <i class="fas fa-external-link-alt"></i> View Publication
-                                </a>
-                            </div>
-                            <div class="publication">
-                                <p class="title">Interuniversal Symbiosis</p>
-                                <p class="isbn">ISBN: 978-3-347-59717-4</p>
-                                <a href="https://shop.tredition.com/booktitle/INTERUNIVERSAL_SYMBIOSIS/W-783-757-572" target="_blank" rel="noopener noreferrer" class="publication-link">
-                                    <i class="fas fa-external-link-alt"></i> View Publication
-                                </a>
-                            </div>
-                            <div class="publication">
-                                <p class="title">Adventures of Two Captains Volume IV: Melodies of the Universes</p>
-                                <p class="isbn">ISBN: 978-3-347-97030-4</p>
-                                <a href="https://shop.tredition.com/booktitle/Adventures_of_Two_Captains_Volume_IV/W-251-038-786" target="_blank" rel="noopener noreferrer" class="publication-link">
-                                    <i class="fas fa-external-link-alt"></i> View Publication
-                                </a>
-                            </div>
+        <!-- Education -->
+        <section id="education" class="block">
+            <header class="block-head reveal">
+                <span class="num">02</span>
+                <h2>Education</h2>
+            </header>
+            <div class="block-body">
+                <ol class="entries">
+                    <li class="entry reveal">
+                        <p class="when">2026 — 2027</p>
+                        <div>
+                            <h3>Master in Oriental Studies</h3>
+                            <p class="where">Sorbonne Nouvelle University · Paris, France</p>
                         </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">2023 — 2026</p>
+                        <div>
+                            <h3>Master in Visual Arts — Arts, Museology and Curatorship</h3>
+                            <p class="where">University of Bologna · Bologna, Italy</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">2018 — 2023</p>
+                        <div>
+                            <h3>Master in Iranian Art History</h3>
+                            <p class="where">Isfahan University of Art · Isfahan, Iran</p>
+                            <p class="note">Final grade 17.18 / 20 · Thesis on the Kalamkari textiles of India and Iran</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">2015 — 2019</p>
+                        <div>
+                            <h3>Bachelor in English Translation</h3>
+                            <p class="where">University of Isfahan · Isfahan, Iran</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <h4 class="sub reveal">Inter-university mobility</h4>
+                <ol class="entries">
+                    <li class="entry reveal">
+                        <p class="when">2025 — 2026</p>
+                        <div>
+                            <h3>Erasmus+ — Study and Research</h3>
+                            <p class="where">Paris 8 University · Saint-Denis, France</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Nov 2025</p>
+                        <div>
+                            <h3>ERUA “Skills for the Future” — Intensive Course</h3>
+                            <p class="where">SWPS University · Poznań, Poland</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">2024 — 2025</p>
+                        <div>
+                            <h3>Erasmus+ — Study</h3>
+                            <p class="where">University of Liège · Liège, Belgium</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="block">
+            <header class="block-head reveal">
+                <span class="num">03</span>
+                <h2>Experience</h2>
+            </header>
+            <div class="block-body">
+                <ol class="entries">
+                    <li class="entry reveal">
+                        <p class="when">Oct 2025</p>
+                        <div>
+                            <h3>Art Mediator</h3>
+                            <p class="where">22,48 m² — Contemporary Art Gallery · Romainville, France</p>
+                            <p class="note">150-hour internship</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Sep 2025</p>
+                        <div>
+                            <h3>Mediator, Grand 8 Festival</h3>
+                            <p class="where">Paris 8 University Vincennes-Saint-Denis · Paris, France</p>
+                            <p class="note">90-hour contract</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Sep 2024</p>
+                        <div>
+                            <h3>Library Assistant</h3>
+                            <p class="where">University of Bologna — Library of the Department of Foreign Languages · Bologna, Italy</p>
+                            <p class="note">150-hour contract</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Ongoing</p>
+                        <div>
+                            <h3>Founder, Arthistorio</h3>
+                            <p class="where">A platform for sharing knowledge in art history</p>
+                            <p><a class="link" href="https://www.arthistorio.com" target="_blank" rel="noopener noreferrer">arthistorio.com ↗</a></p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Since 2021</p>
+                        <div>
+                            <h3>Layout and Typesetting</h3>
+                            <p class="where">Freelance · Book design for tredition</p>
+                            <ul class="books">
+                                <li><a href="https://shop.tredition.com/booktitle/The_Unification_of_the_Phoenix_and_the_Dragon/W-467-086-390" target="_blank" rel="noopener noreferrer">The Unification of the Phoenix and the Dragon</a><span>978-3-347-51438-6</span></li>
+                                <li><a href="https://shop.tredition.com/booktitle/Adventures_of_Two_Captains_Postmodernism_Dialectic_in__Literature_and_International_Relations/W-950-182-253" target="_blank" rel="noopener noreferrer">Adventures of Two Captains; Postmodernism Dialectic in: Literature and International Relations</a><span>978-3-347-29585-8</span></li>
+                                <li><a href="https://shop.tredition.com/booktitle/A_Melody_Called_Africa_/W-566-244-034" target="_blank" rel="noopener noreferrer">A Melody called Africa, Una Melodia Chiamata</a><span>978-3-347-60095-9</span></li>
+                                <li><a href="https://shop.tredition.com/booktitle/Floating_in_the_Hail/W-112-697-287" target="_blank" rel="noopener noreferrer">Floating in the Hail</a><span>978-3-347-54785-8</span></li>
+                                <li><a href="https://shop.tredition.com/booktitle/INTERUNIVERSAL_SYMBIOSIS/W-783-757-572" target="_blank" rel="noopener noreferrer">Interuniversal Symbiosis</a><span>978-3-347-59717-4</span></li>
+                                <li><a href="https://shop.tredition.com/booktitle/Adventures_of_Two_Captains_Volume_IV/W-251-038-786" target="_blank" rel="noopener noreferrer">Adventures of Two Captains Volume IV: Melodies of the Universes</a><span>978-3-347-97030-4</span></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Publications & talks -->
+        <section id="publications" class="block">
+            <header class="block-head reveal">
+                <span class="num">04</span>
+                <h2>Publications &amp; Talks</h2>
+            </header>
+            <div class="block-body">
+                <ol class="entries">
+                    <li class="entry reveal">
+                        <p class="when">2026</p>
+                        <div>
+                            <h3>Daštān (Bīnamāzi), the Related Rules in Sasanian and Post-Sasanian Texts</h3>
+                            <p class="where">Esmaeil Sangari, Parvin Davari, <strong>Mahmoud Mohammadi</strong>, Erfaneh Khosravi</p>
+                            <p class="note"><em>Ancient Iranian Studies</em>, Vol. 5, No. 14, pp. 113–122 · Open access</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Forthcoming</p>
+                        <div>
+                            <h3>The Iconography of Crescent of Freedom in Manichaean Art (Case Study: III 6278, Museum für Asiatische Kunst)</h3>
+                            <p class="where">Esmaeil Sangari, Azade Fathipour Dehkordi, Erfaneh Khosravi, <strong>Mahmoud Mohammadi</strong></p>
+                            <p class="note"><em>Iran and the Caucasus</em>, Brill · Accepted after double-blind peer review</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <h4 class="sub reveal">Talks, events and honours</h4>
+                <ol class="entries">
+                    <li class="entry reveal">
+                        <p class="when">May 2026</p>
+                        <div>
+                            <h3>Volunteer Musician — Nowruz: Spring and Renewal Across Cultures</h3>
+                            <p class="where">University of Bologna · Bologna, Italy</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Nov 2025</p>
+                        <div>
+                            <h3>Guest Speaker — “Persian Printed Textiles”</h3>
+                            <p class="where">Adam Mickiewicz University in Poznań · Poland</p>
+                            <p class="note">Middle East Cultures event, Faculty of Political Science and Journalism</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">2019</p>
+                        <div>
+                            <h3>Master's Entrance Exam — Art Research and Handicrafts</h3>
+                            <p class="where">National Organization of Educational Testing · Iran</p>
+                            <p class="note">Ranked 70th of 3,679 candidates nationally · 43rd in Code Coefficient 3</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <h4 class="sub reveal">Certificates</h4>
+                <ol class="entries">
+                    <li class="entry reveal">
+                        <p class="when">Aug 2024</p>
+                        <div>
+                            <h3>Editing for Film and Video Art</h3>
+                            <p class="where">Berlin Summer University of the Arts · Germany</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Aug 2024</p>
+                        <div>
+                            <h3>Teaching French as a Foreign Language Today — Advanced Course</h3>
+                            <p class="where">CAVILAM – Alliance Française de Vichy</p>
+                            <p><a class="link" href="https://mooc.cavilam.com/certificates/36d7bb6236d94d85b9fbeb66dd9e62d6" target="_blank" rel="noopener noreferrer">Certificate ↗</a></p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Jan 2023</p>
+                        <div>
+                            <h3>Diploma in French Language Studies (DELF) B2</h3>
+                            <p class="where">French Ministry of National Education</p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Sep 2022</p>
+                        <div>
+                            <h3>Documentary Research</h3>
+                            <p class="where">École Polytechnique</p>
+                            <p><a class="link" href="https://coursera.org/share/5f8105b70cf3ee237d4deaa0bb026e5b" target="_blank" rel="noopener noreferrer">Certificate ↗</a></p>
+                        </div>
+                    </li>
+                    <li class="entry reveal">
+                        <p class="when">Licence</p>
+                        <div>
+                            <h3>Tour Guide — Tourism in Iran and Worldwide</h3>
+                            <p class="where">Ministry of Cultural Heritage, Handicrafts and Tourism · Iran</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Skills & languages -->
+        <section id="skills" class="block">
+            <header class="block-head reveal">
+                <span class="num">05</span>
+                <h2>Skills &amp; Languages</h2>
+            </header>
+            <div class="block-body">
+                <div class="columns">
+                    <div class="reveal">
+                        <h4 class="sub">Digital</h4>
+                        <ul class="tags">
+                            <li>Vibe coding (GitHub)</li>
+                            <li>WordPress</li>
+                            <li>HTML</li>
+                            <li>Affinity Designer 2</li>
+                            <li>Adobe InDesign</li>
+                            <li>Microsoft Office</li>
+                            <li>Pages</li>
+                            <li>VN · CapCut</li>
+                            <li>Photography</li>
+                        </ul>
+                    </div>
+                    <div class="reveal">
+                        <h4 class="sub">Languages <span class="hint">CEFR</span></h4>
+                        <ul class="langs">
+                            <li style="--lvl:6"><span>Persian</span><i aria-hidden="true"></i><b>Native</b></li>
+                            <li style="--lvl:5"><span>English</span><i aria-hidden="true"></i><b>C1</b></li>
+                            <li style="--lvl:4"><span>French</span><i aria-hidden="true"></i><b>B2</b></li>
+                            <li style="--lvl:2"><span>Italian</span><i aria-hidden="true"></i><b>A2</b></li>
+                            <li style="--lvl:1"><span>Arabic</span><i aria-hidden="true"></i><b>A1</b></li>
+                        </ul>
                     </div>
                 </div>
+
+                <h4 class="sub reveal">Interests</h4>
+                <p class="reveal">Music — playing the <em>setar</em>, a traditional Iranian instrument. Photography of nature, architecture and art history, on a Canon 700D and a Sony Alpha 6100.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Publications Section -->
-    <section id="publications" class="education">
-        <div class="container">
-            <h2 data-aos="fade-up">Publications</h2>
-            <div class="education-content" data-aos="fade-up">
-                <div class="education-item">
-                    <h3>Daštān (Bīnamāzi), the Related Rules in Sasanian and Post-Sasanian Texts</h3>
-                    <p class="institution">Esmaeil Sangari, Parvin Davari, Mahmoud Mohammadi, Erfaneh Khosravi</p>
-                    <p class="period"><em>Ancient Iranian Studies</em>, 2026, Vol. 5, No. 14, pp. 113–122</p>
-                    <p class="note">Open access</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>The Iconography of Crescent of Freedom in Manichaean Art (Case Study: III 6278, Museum für Asiatische Kunst)</h3>
-                    <p class="institution">Esmaeil Sangari, Azade Fathipour Dehkordi, Erfaneh Khosravi, Mahmoud Mohammadi</p>
-                    <p class="period"><em>Iran and the Caucasus</em>, Brill Academic Publishers, Leiden–Boston</p>
-                    <p class="note">Accepted for publication after double-blind peer review</p>
-                </div>
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <p class="eyebrow reveal">06 — Contact</p>
+            <h2 class="reveal">Let's work on an <em>exhibition</em> together.</h2>
+            <a class="email reveal" href="mailto:maahaan.1995@gmail.com">maahaan.1995@gmail.com</a>
+            <div class="links reveal">
+                <a href="https://www.linkedin.com/in/mahmoud-mohammadi/" target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a>
+                <a href="https://github.com/moarthist" target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a>
+                <a href="https://www.arthistorio.com" target="_blank" rel="noopener noreferrer" class="link">Arthistorio ↗</a>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Talks and Honours Section -->
-    <section id="talks" class="education">
-        <div class="container">
-            <h2 data-aos="fade-up">Talks, Events and Honours</h2>
-            <div class="education-content" data-aos="fade-up">
-                <div class="education-item">
-                    <h3>Guest Speaker – “Persian Printed Textiles”</h3>
-                    <p class="institution">Adam Mickiewicz University in Poznań | Poznań, Poland</p>
-                    <p class="period">November 28, 2025</p>
-                    <p class="thesis">Middle East Cultures event, Faculty of Political Science and Journalism</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Volunteer Musician – Nowruz: Spring and Renewal Across Cultures</h3>
-                    <p class="institution">University of Bologna | Bologna, Italy</p>
-                    <p class="period">May 2026</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Master's Entrance Exam (2019) – Art Research and Handicrafts</h3>
-                    <p class="institution">National Organization of Educational Testing | Iran</p>
-                    <p class="note">National rank: 70th out of 3,679 candidates; 43rd in Code Coefficient 3</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="education">
-        <div class="container">
-            <h2 data-aos="fade-up">Certificates</h2>
-            <div class="education-content" data-aos="fade-up">
-                <div class="education-item">
-                    <h3>Editing for Film and Video Art</h3>
-                    <p class="institution">Berlin Summer University of the Arts | Berlin, Germany</p>
-                    <p class="period">August 15–23, 2024</p>
-                    <p class="website"><a href="https://summer-university.udk-berlin.de" target="_blank" rel="noopener noreferrer">summer-university.udk-berlin.de</a></p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Tour Guide – Tourism in Iran and Worldwide</h3>
-                    <p class="institution">Ministry of Cultural Heritage, Handicrafts and Tourism | Iran</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Teaching French as a Foreign Language Today – Advanced Course</h3>
-                    <p class="institution">CAVILAM - Alliance Française de Vichy</p>
-                    <p class="period">August 9, 2024</p>
-                    <p class="website"><a href="https://mooc.cavilam.com/certificates/36d7bb6236d94d85b9fbeb66dd9e62d6" target="_blank" rel="noopener noreferrer">Certificate Reference</a></p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Diploma in French Language Studies (DELF) B2</h3>
-                    <p class="institution">French Ministry of National Education</p>
-                    <p class="period">January 2023</p>
-                </div>
-
-                <div class="education-item">
-                    <h3>Documentary Research</h3>
-                    <p class="institution">École Polytechnique</p>
-                    <p class="period">September 14, 2022</p>
-                    <p class="website"><a href="https://coursera.org/share/5f8105b70cf3ee237d4deaa0bb026e5b" target="_blank" rel="noopener noreferrer">Certificate Reference</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 data-aos="fade-up">Digital Skills</h2>
-            <div class="skills-grid" data-aos="fade-up">
-                <div class="skill-card">
-                    <i class="fab fa-github"></i>
-                    <h3>Vibe Coding (GitHub)</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-wordpress"></i>
-                    <h3>WordPress</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-pen-nib"></i>
-                    <h3>Affinity Designer 2 / Adobe InDesign</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-file-word"></i>
-                    <h3>Microsoft Office / Pages</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-video"></i>
-                    <h3>Video Editing (VN / CapCut)</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-camera"></i>
-                    <h3>Photography</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Language Skills Section -->
-    <section id="languages" class="languages">
-        <div class="container">
-            <h2 data-aos="fade-up">Language Skills</h2>
-            <div class="languages-grid" data-aos="fade-up">
-                <div class="language-card">
-                    <i class="fas fa-language"></i>
-                    <h3>Persian</h3>
-                    <p class="level">Native Language</p>
-                </div>
-                <div class="language-card">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3>English</h3>
-                    <p class="level">C1</p>
-                </div>
-                <div class="language-card">
-                    <i class="fas fa-globe-europe"></i>
-                    <h3>French</h3>
-                    <p class="level">B2</p>
-                </div>
-                <div class="language-card">
-                    <i class="fas fa-globe-europe"></i>
-                    <h3>Italian</h3>
-                    <p class="level">A2</p>
-                </div>
-                <div class="language-card">
-                    <i class="fas fa-globe-asia"></i>
-                    <h3>Arabic</h3>
-                    <p class="level">A1</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interests Section -->
-    <section id="interests" class="languages">
-        <div class="container">
-            <h2 data-aos="fade-up">Interests</h2>
-            <div class="languages-grid" data-aos="fade-up">
-                <div class="language-card">
-                    <i class="fas fa-music"></i>
-                    <h3>Music</h3>
-                    <p class="level">Playing the setar, a traditional Iranian instrument</p>
-                </div>
-                <div class="language-card">
-                    <i class="fas fa-camera-retro"></i>
-                    <h3>Photography</h3>
-                    <p class="level">Nature, architecture and art history – Canon 700D / Sony Alpha 6100</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 data-aos="fade-up">Get in Touch</h2>
-            <div class="contact-content" data-aos="fade-up">
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mahmoud MOHAMMADI. All rights reserved.</p>
-        </div>
+        <p>© <span class="year">2026</span> Mahmoud Mohammadi</p>
+        <a href="#top" class="link">Back to top ↑</a>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

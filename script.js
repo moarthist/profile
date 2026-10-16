@@ -1,192 +1,81 @@
-// Initialize AOS (Animate On Scroll)
-AOS.init({
-    duration: 800,
-    once: true,
-    offset: 100,
-    easing: 'ease-out-cubic'
-});
+// Mahmoud Mohammadi — portfolio & CV
+(function () {
+    var root = document.documentElement;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    root.classList.add('js');
 
-// Mobile Navigation
-const mobileMenuBtn = document.createElement('button');
-mobileMenuBtn.className = 'mobile-menu-btn';
-mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-document.querySelector('.nav-content').appendChild(mobileMenuBtn);
+    // Theme toggle: follows the system until the visitor picks one
+    var toggle = document.querySelector('.theme-toggle');
+    toggle.addEventListener('click', function () {
+        var current = root.getAttribute('data-theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        var next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+    });
 
-mobileMenuBtn.addEventListener('click', () => {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-    mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
-    mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
-});
-
-// Dark mode toggle with smooth transition
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    body.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-}
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
-
-function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('i');
-    icon.style.transform = 'rotate(360deg)';
-    setTimeout(() => {
-        if (theme === 'dark') {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-        icon.style.transform = 'rotate(0)';
-    }, 200);
-}
-
-// Enhanced smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            // Close mobile menu if open
-            document.querySelector('.nav-links').classList.remove('active');
-            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-            
-            const targetPosition = target.offsetTop - 70; // Account for fixed header
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
+    // Reveal on scroll, staggering siblings that enter together
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var observer = new IntersectionObserver(function (entries) {
+            var batch = entries.filter(function (e) { return e.isIntersecting; });
+            batch.forEach(function (e, i) {
+                e.target.style.setProperty('--delay', (i * 0.08) + 's');
+                e.target.classList.add('in');
+                observer.unobserve(e.target);
             });
-        }
-    });
-});
-
-// Enhanced back to top button with smooth animation
-const backToTopButton = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('visible');
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+        reveals.forEach(function (el) { observer.observe(el); });
     } else {
-        backToTopButton.classList.remove('visible');
+        reveals.forEach(function (el) { el.classList.add('in'); });
     }
-});
 
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Enhanced form submission with validation and feedback
-const contactForm = document.querySelector('.contact-form');
-const submitButton = contactForm.querySelector('button[type="submit"]');
-
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Disable submit button and show loading state
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Show success message
-        showNotification('Thank you for your message! I will get back to you soon.', 'success');
-        contactForm.reset();
-    } catch (error) {
-        showNotification('Oops! Something went wrong. Please try again.', 'error');
-    } finally {
-        // Reset submit button
-        submitButton.disabled = false;
-        submitButton.innerHTML = 'Send Message';
+    // Highlight the nav link of the section in view
+    var links = {};
+    document.querySelectorAll('.nav a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+        var navObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                var link = links[e.target.id];
+                if (link && e.isIntersecting) {
+                    Object.keys(links).forEach(function (k) { links[k].classList.remove('active'); });
+                    link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        Object.keys(links).forEach(function (id) {
+            var section = document.getElementById(id);
+            if (section) navObserver.observe(section);
+        });
     }
-});
 
-// Notification system
-function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-        ${message}
-    `;
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => notification.classList.add('show'), 100);
-    
-    // Remove after 5 seconds
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 300);
-    }, 5000);
-}
+    // Scroll progress bar, top-bar rule and a gentle portrait parallax
+    var progress = document.querySelector('.progress');
+    var topbar = document.querySelector('.topbar');
+    var portrait = document.querySelector('.arch img');
+    var ticking = false;
 
-// Enhanced typing animation with cursor
-const typingText = document.querySelector('.typing-text');
-const text = typingText.textContent;
-typingText.innerHTML = '<span></span><span class="cursor">|</span>';
-const textSpan = typingText.querySelector('span');
-
-let charIndex = 0;
-function typeText() {
-    if (charIndex < text.length) {
-        textSpan.textContent += text.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeText, 100);
-    }
-}
-
-// Start typing animation when the page loads
-window.addEventListener('load', () => {
-    setTimeout(typeText, 500);
-});
-
-// Enhanced scroll spy for navigation
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-function updateActiveLink() {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
+    function onScroll() {
+        var y = window.scrollY;
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
+        topbar.style.setProperty('--scrolled', y > 8 ? 1 : 0);
+        if (y < document.getElementById('about').offsetTop - window.innerHeight / 2) {
+            Object.keys(links).forEach(function (k) { links[k].classList.remove('active'); });
         }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
+        if (!reduceMotion && portrait && y < window.innerHeight) {
+            portrait.style.setProperty('--shift', (y * 0.08).toFixed(1) + 'px');
         }
-    });
-}
+        ticking = false;
+    }
 
-window.addEventListener('scroll', updateActiveLink);
-window.addEventListener('load', updateActiveLink); 
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+    onScroll();
+
+    document.querySelector('.year').textContent = new Date().getFullYear();
+})();
