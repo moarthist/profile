@@ -3,95 +3,111 @@
     var body = document.body;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Hero load-in
-    document.querySelectorAll('.hero-nav a').forEach(function (a, i) { a.style.setProperty('--i', i); });
-    requestAnimationFrame(function () { requestAnimationFrame(function () { body.classList.add('loaded'); }); });
-    setTimeout(function () { body.classList.add('loaded'); }, 800);
-
-    // Manifesto: words fill in from pale to black as you scroll
-    var manifesto = document.querySelector('.manifesto-text');
-    var words = manifesto.textContent.trim().split(/\s+/);
-    manifesto.setAttribute('aria-label', manifesto.textContent.trim());
-    manifesto.innerHTML = words.map(function (w) { return '<span class="w" aria-hidden="true">' + w + '</span>'; }).join(' ');
-    var wordEls = manifesto.querySelectorAll('.w');
-
-    // Fields: highlight the index entry of the panel in view
-    var panels = document.querySelectorAll('.panel');
-    var indexItems = document.querySelectorAll('.fields-index li');
-
-    function onScroll() {
-        var vh = window.innerHeight;
-
-        var r = manifesto.getBoundingClientRect();
-        var p = Math.min(Math.max((vh * 0.85 - r.top) / (r.height + vh * 0.35), 0), 1);
-        var lit = Math.round(p * wordEls.length);
-        wordEls.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
-
-        var active = 0;
-        panels.forEach(function (panel, i) {
-            var pr = panel.getBoundingClientRect();
-            if (pr.top < vh * 0.5) active = i;
-        });
-        indexItems.forEach(function (li, i) { li.classList.toggle('active', i === active); });
+    // Loader: count to 100%, then wipe away
+    var count = document.querySelector('.loader-count');
+    var started = false;
+    function start() {
+        if (started) return;
+        started = true;
+        count.textContent = '100%';
+        body.classList.add('loaded');
+    }
+    if (reduceMotion) {
+        start();
+    } else {
+        var t0 = null;
+        (function tick(now) {
+            if (started) return;
+            if (t0 === null) t0 = now;
+            var p = Math.min((now - t0) / 1000, 1);
+            count.textContent = Math.round(p * p * (3 - 2 * p) * 100) + '%';
+            if (p < 1) requestAnimationFrame(tick); else setTimeout(start, 150);
+        })(performance.now());
+        setTimeout(start, 2500);
     }
 
-    if (reduceMotion) {
-        wordEls.forEach(function (w) { w.classList.add('on'); });
-    } else {
+    // Letter roll: duplicate each letter so it can slide up on hover
+    document.querySelectorAll('.roll').forEach(function (el) {
+        var text = el.textContent;
+        el.setAttribute('aria-label', text);
+        el.innerHTML = text.split('').map(function (c, i) {
+            var ch = c === ' ' ? '&nbsp;' : c.replace(/[<>&]/g, '');
+            return '<span class="ch" style="--i:' + i + '" aria-hidden="true"><span>' + ch + '</span><span>' + ch + '</span></span>';
+        }).join('');
+    });
+
+    // Statements: split into words (and letters for the scattered one)
+    var statements = document.querySelectorAll('.statement');
+    statements.forEach(function (el) {
+        var words = el.textContent.trim().split(/\s+/);
+        el.setAttribute('aria-label', el.textContent.trim());
+        var k = 0;
+        el.innerHTML = words.map(function (w) {
+            if (!el.classList.contains('scatter')) return '<span class="w" aria-hidden="true">' + w + '</span>';
+            var letters = w.split('').map(function (c) {
+                var x = (Math.random() * 2 - 1) * 60, y = (Math.random() * 2 - 1) * 90 + 40, r = (Math.random() * 2 - 1) * 70;
+                return '<span class="c" style="--x:' + x.toFixed(0) + 'vw;--y:' + y.toFixed(0) + 'vh;--r:' + r.toFixed(0) + 'deg;--k:' + (k++) + '">' + c + '</span>';
+            }).join('');
+            return '<span class="w" aria-hidden="true">' + letters + '</span>';
+        }).join(' ');
+    });
+
+    // Scroll effects: hero title slides sideways, statement words light up
+    var heroTitle = document.querySelector('.hero-title span');
+    function onScroll() {
+        var vh = window.innerHeight;
+        var overflow = heroTitle.scrollWidth - document.documentElement.clientWidth * 0.9;
+        if (overflow > 0) heroTitle.style.setProperty('--tx', (-Math.min(window.scrollY * 0.5, overflow)).toFixed(1) + 'px');
+
+        statements.forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            var p = Math.min(Math.max((vh * 0.8 - r.top) / (r.height + vh * 0.3), 0), 1);
+            var ws = el.querySelectorAll('.w');
+            var lit = Math.max(1, Math.round(p * ws.length));
+            ws.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
+        });
+    }
+    if (!reduceMotion) {
         var ticking = false;
         window.addEventListener('scroll', function () {
             if (!ticking) { requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
         }, { passive: true });
         window.addEventListener('resize', onScroll);
         onScroll();
+    } else {
+        document.querySelectorAll('.statement .w').forEach(function (w) { w.classList.add('on'); });
     }
 
-    // Reveal blocks as they enter
-    var reveals = document.querySelectorAll('.fields-side .big, .panel, .statement span, .cv-title, .group, .contact .big, .contact-row');
-    reveals.forEach(function (el) { el.classList.add('reveal'); });
+    // Reveal blocks and assemble the scattered statement when they enter
+    var targets = document.querySelectorAll('.reveal, .scatter, .col, .sec-head');
+    document.querySelectorAll('.col, .sec-head').forEach(function (el) { el.classList.add('reveal'); });
     if ('IntersectionObserver' in window && !reduceMotion) {
         var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+            entries.forEach(function (e, i) {
+                if (!e.isIntersecting) return;
+                e.target.style.transitionDelay = (i * 0.08) + 's';
+                e.target.classList.add('in');
+                observer.unobserve(e.target);
             });
-        }, { rootMargin: '0px 0px -10% 0px' });
-        reveals.forEach(function (el) { observer.observe(el); });
+        }, { rootMargin: '0px 0px -12% 0px' });
+        targets.forEach(function (el) { observer.observe(el); });
     } else {
-        reveals.forEach(function (el) { el.classList.add('in'); });
+        targets.forEach(function (el) { el.classList.add('in'); });
     }
 
-    // Typewriter line in the contact section
-    var typer = document.querySelector('.typer-text');
-    var phrases = ["Let's talk museums", "Let's talk Persian art", "Or just say salam"];
-    if (!reduceMotion) {
-        var pi = 0, ci = phrases[0].length, deleting = true;
-        setTimeout(function step() {
-            var phrase = phrases[pi];
-            if (deleting) {
-                ci--;
-                if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-            } else {
-                ci++;
-            }
-            typer.textContent = phrases[pi].slice(0, ci);
-            var delay = deleting ? 45 : 85;
-            if (!deleting && ci === phrases[pi].length) { deleting = true; delay = 2200; }
-            setTimeout(step, delay);
-        }, 2600);
-    }
-
-    // Live Paris time in the footer
+    // Live Paris time with its GMT offset
     var clock = document.querySelector('.clock');
-    function tick() {
+    function tickClock() {
         try {
-            clock.textContent = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'Europe/Paris', hour: 'numeric', minute: '2-digit', second: '2-digit'
-            }).format(new Date());
+            var now = new Date();
+            var time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' }).format(now);
+            var zone = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', timeZoneName: 'shortOffset' })
+                .formatToParts(now).filter(function (p) { return p.type === 'timeZoneName'; })[0];
+            clock.textContent = '(' + (zone ? zone.value : 'CET') + ') ' + time;
         } catch (e) {}
     }
-    tick();
-    setInterval(tick, 1000);
+    tickClock();
+    setInterval(tickClock, 15000);
 
-    var year = String(new Date().getFullYear());
-    document.querySelectorAll('.year').forEach(function (el) { el.textContent = year; });
+    document.querySelectorAll('.year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

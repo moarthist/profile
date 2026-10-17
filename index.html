@@ -3,196 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahmoud Mohammadi — Art Historian &amp; Translator</title>
+    <title>Mahmoud Mohammadi · Art Historian</title>
     <meta name="description" content="Mahmoud Mohammadi — art historian and translator based in Paris. Museology, scenography and Persian visual culture.">
-    <meta name="theme-color" content="#fcfcfc">
+    <meta name="theme-color" content="#f7f7f7">
     <meta property="og:type" content="profile">
-    <meta property="og:title" content="Mahmoud Mohammadi — Art Historian &amp; Translator">
+    <meta property="og:title" content="Mahmoud Mohammadi · Art Historian">
     <meta property="og:description" content="Museology, scenography and Persian visual culture.">
-    <meta property="og:image" content="https://moarthist.github.io/profile/portrait-bw.jpg">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ff008c'/%3E%3C/svg%3E">
+    <meta property="og:image" content="https://moarthist.github.io/profile/portrait.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23101010'/%3E%3Ctext x='32' y='44' font-family='Arial Narrow,Arial' font-weight='700' font-size='30' fill='%23f7f7f7' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Mrs+Saint+Delafield&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@600;700&family=Spline+Sans+Mono:wght@300;400&display=swap">
     <link rel="stylesheet" href="style.css">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+    <div class="loader" aria-hidden="true"><span class="loader-count">0%</span></div>
+
+    <header class="header">
+        <a href="#top" class="logo">Mahmoud<br>Mohammadi</a>
+        <nav class="nav" aria-label="Sections">
+            <a href="#about" class="roll">[ About me ]</a>
+            <a href="#fields" class="roll">[ Fields ]</a>
+            <a href="#cv" class="roll">[ CV ]</a>
+            <a href="#contact" class="roll">[ Connect ]</a>
+        </nav>
+    </header>
+
     <main id="top">
         <!-- Hero -->
         <section class="hero">
-            <figure class="hero-photo">
-                <img src="portrait-bw.jpg" width="799" height="1183" alt="Portrait of Mahmoud Mohammadi" fetchpriority="high">
-                <nav class="hero-nav" aria-label="Sections">
-                    <a href="#top">Home</a>
-                    <a href="#me">Me</a>
-                    <a href="#fields">Fields</a>
-                    <a href="#cv">Curriculum</a>
-                    <a href="#contact">Get in touch</a>
-                </nav>
-            </figure>
+            <p class="hero-count">Paris, FR</p>
+            <h1 class="hero-title"><span>Art Historian</span></h1>
 
-            <h1 class="hero-title"><span class="line"><span>Art Historian</span></span></h1>
+            <div class="hero-box">
+                <figure class="hero-photo">
+                    <img src="portrait.jpg" width="799" height="863" alt="Portrait of Mahmoud Mohammadi" fetchpriority="high">
+                </figure>
+                <ul class="hero-list">
+                    <li>/ Museology</li>
+                    <li>/ Scenography</li>
+                    <li>/ Persian Studies</li>
+                    <li>/ Translation</li>
+                </ul>
+            </div>
 
-            <div class="hero-side">
-                <p class="hero-sub"><span class="line"><span>&amp; Translator</span></span></p>
-                <p class="hero-intro"><i class="dot" aria-hidden="true"></i>I'm Mahmoud Mohammadi, an art historian and translator based in Paris. I study how museums read, describe and stage objects — with a focus on Persian visual culture, museology and scenography.</p>
+            <div class="hero-copy">
+                <p>Art historian and translator based in Paris, working between Persian visual culture and the contemporary museum.</p>
+                <p>Research. Mediation. Exhibition.</p>
+            </div>
+
+            <div class="hero-avail">
+                <p>Available for collaboration <span aria-hidden="true">↘</span></p>
+                <a href="mailto:maahaan.1995@gmail.com">maahaan.1995@gmail.com</a>
             </div>
         </section>
 
-        <!-- Manifesto -->
-        <section id="me" class="manifesto">
-            <p class="label">Manifesto</p>
-            <p class="manifesto-text">For me, a museum is where research meets the public. Read closely. Describe clearly. Stage with care. Persian texts, images and textiles are my field; museology and scenography are how I share them. Five languages help me carry ideas across borders, and every exhibition is a chance to tell a story better.</p>
+        <!-- For me -->
+        <section class="dark forme" aria-label="Statement">
+            <span class="sec-num">2/5</span>
+            <p class="mono-label">For me</p>
+            <p class="statement scatter">A museum is not just a room, but a way of telling stories.</p>
         </section>
 
-        <!-- Fields (sticky) -->
+        <!-- About -->
+        <section id="about" class="about">
+            <div class="sec-head">
+                <h2 class="huge">Hello!<br>I'm Mahmoud<br>Mohammadi</h2>
+                <span class="mono-label">DSGN/3</span>
+            </div>
+            <div class="about-cols">
+                <div class="reveal">
+                    <h3 class="col-head">My experience</h3>
+                    <p>An art historian and translator trained in Iran, Italy, Belgium and France — from a bachelor's in English Translation to a master's in Visual Arts, Museology and Curatorship at the University of Bologna.</p>
+                    <p>Recently an art mediator in Romainville and at the Grand 8 Festival in Paris.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="col-head">My philosophy</h3>
+                    <p>I value close reading, clear description and careful staging. An object only speaks when someone tells its story well — that is the work of the museum.</p>
+                </div>
+                <div class="reveal">
+                    <h3 class="col-head">My lifestyle</h3>
+                    <p>I play the setar, a traditional Iranian instrument, and photograph nature, architecture and art history. It's not just a hobby — it's a way of seeing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Second statement -->
+        <section class="dark forme small" aria-label="Statement">
+            <span class="sec-num">3/5</span>
+            <p class="mono-label">Every project</p>
+            <p class="statement fill">Every exhibition is more than a display. It's a story told through objects, space and language.</p>
+        </section>
+
+        <!-- Fields -->
         <section id="fields" class="fields">
-            <div class="fields-side">
-                <h2 class="big">Fields<br>of work</h2>
-                <ol class="fields-index">
-                    <li class="active"><span>01 Museology</span><span>2023–26</span></li>
-                    <li><span>02 Scenography</span><span>2025</span></li>
-                    <li><span>03 Persian Studies</span><span>2018–26</span></li>
-                    <li><span>04 Translation</span><span>2015–</span></li>
-                </ol>
+            <div class="sec-head">
+                <h2 class="huge">Fields</h2>
+                <span class="mono-label">DSGN/4</span>
             </div>
-            <div class="fields-panels">
-                <article class="panel" data-index="0">
-                    <span class="panel-num">(01)</span>
+            <ol class="cols">
+                <li class="col">
+                    <span class="col-num">00-1</span>
                     <h3>Museology</h3>
-                    <p>How museums collect, describe and share objects — with a focus on virtual exhibitions and digital access to heritage. Master in Visual Arts, Museology and Curatorship, University of Bologna.</p>
-                </article>
-                <article class="panel" data-index="1">
-                    <span class="panel-num">(02)</span>
+                    <ul class="col-list"><li>// Museology</li><li>/ Collections</li><li>/ Virtual exhibitions</li><li>/ Digital heritage</li><li>/ Curatorship</li></ul>
+                    <p>How museums collect, describe and share objects — with a focus on virtual exhibitions and digital access to heritage.</p>
+                </li>
+                <li class="col">
+                    <span class="col-num">00-2</span>
                     <h3>Scenography</h3>
-                    <p>Arranging rooms, light and sequence so visitors move through a story rather than past a list. Art mediation at 22,48 m² in Romainville and the Grand 8 Festival in Paris.</p>
-                </article>
-                <article class="panel" data-index="2">
-                    <span class="panel-num">(03)</span>
+                    <ul class="col-list"><li>// Scenography</li><li>/ Space &amp; sequence</li><li>/ Art mediation</li><li>/ Visitor experience</li></ul>
+                    <p>Arranging rooms, light and sequence so visitors move through a story rather than past a list of objects.</p>
+                </li>
+                <li class="col">
+                    <span class="col-num">00-3</span>
                     <h3>Persian Studies</h3>
-                    <p>Iranian art and culture from Sasanian texts and Manichaean iconography to Persian printed textiles and Kalamkari.</p>
-                </article>
-                <article class="panel" data-index="3">
-                    <span class="panel-num">(04)</span>
+                    <ul class="col-list"><li>// Persian studies</li><li>/ Sasanian texts</li><li>/ Manichaean art</li><li>/ Printed textiles</li><li>/ Kalamkari</li></ul>
+                    <p>Iranian art and culture, from Sasanian texts and Manichaean iconography to Persian printed textiles.</p>
+                </li>
+                <li class="col">
+                    <span class="col-num">00-4</span>
                     <h3>Translation</h3>
-                    <p>Persian, English, French, Italian and Arabic — carrying texts, ideas and audiences across cultures. Bachelor in English Translation, University of Isfahan.</p>
-                </article>
-            </div>
+                    <ul class="col-list"><li>// Translation</li><li>/ Persian</li><li>/ English · French</li><li>/ Italian · Arabic</li></ul>
+                    <p>Carrying texts, ideas and audiences across five languages and cultures.</p>
+                </li>
+            </ol>
         </section>
 
-        <!-- Statement -->
-        <section class="statement" aria-label="Statement">
-            <p><span>Objects are</span><span>silent.</span><span><em>stories</em> aren't.</span></p>
-        </section>
-
-        <!-- Curriculum -->
+        <!-- CV -->
         <section id="cv" class="cv">
-            <h2 class="big cv-title">Curriculum<br>vitae</h2>
+            <div class="sec-head">
+                <h2 class="huge">Curriculum</h2>
+                <span class="mono-label">DSGN/5</span>
+            </div>
+            <p class="cv-intro reveal">Studies, work and research across four countries and five languages.</p>
 
-            <div class="group">
-                <p class="label">Education</p>
-                <ol class="table">
-                    <li><span>23–26</span><span>Master in Visual Arts — Arts, Museology and Curatorship</span><span>University of Bologna, Italy</span></li>
-                    <li><span>15–19</span><span>Bachelor in English Translation</span><span>University of Isfahan, Iran</span></li>
+            <div class="cv-group reveal">
+                <h3>Education <span>( 2 )</span></h3>
+                <ol>
+                    <li><span>2023–26</span><span>Master in Visual Arts — Arts, Museology and Curatorship</span><span>University of Bologna</span></li>
+                    <li><span>2015–19</span><span>Bachelor in English Translation</span><span>University of Isfahan</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Mobility</p>
-                <ol class="table">
-                    <li><span>25–26</span><span>Erasmus+ — Study and Research</span><span>Paris 8 University, Saint-Denis</span></li>
-                    <li><span>25</span><span>ERUA “Skills for the Future” — Intensive Course</span><span>SWPS University, Poznań</span></li>
-                    <li><span>24–25</span><span>Erasmus+ — Study</span><span>University of Liège, Belgium</span></li>
+            <div class="cv-group reveal">
+                <h3>Mobility <span>( 3 )</span></h3>
+                <ol>
+                    <li><span>2025–26</span><span>Erasmus+ — Study and Research</span><span>Paris 8 University</span></li>
+                    <li><span>2025</span><span>ERUA “Skills for the Future” — Intensive Course</span><span>SWPS University, Poznań</span></li>
+                    <li><span>2024–25</span><span>Erasmus+ — Study</span><span>University of Liège</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Experience</p>
-                <ol class="table">
-                    <li><span>25</span><span>Art Mediator</span><span>22,48 m² Contemporary Art Gallery, Romainville · 150 h</span></li>
-                    <li><span>25</span><span>Mediator, Grand 8 Festival</span><span>Paris 8 University Vincennes-Saint-Denis · 90 h</span></li>
-                    <li><span>24</span><span>Library Assistant</span><span>University of Bologna, Department of Foreign Languages · 150 h</span></li>
+            <div class="cv-group reveal">
+                <h3>Experience <span>( 3 )</span></h3>
+                <ol>
+                    <li><span>2025</span><span>Art Mediator — 150-hour internship</span><span>22,48 m² Gallery, Romainville</span></li>
+                    <li><span>2025</span><span>Mediator, Grand 8 Festival — 90-hour contract</span><span>Paris 8 University</span></li>
+                    <li><span>2024</span><span>Library Assistant — 150-hour contract</span><span>University of Bologna</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Publications</p>
-                <ol class="table pubs">
-                    <li><span>26</span><span>Daštān (Bīnamāzi), the Related Rules in Sasanian and Post-Sasanian Texts<small>Esmaeil Sangari, Parvin Davari, Mahmoud Mohammadi, Erfaneh Khosravi</small></span><span><em>Ancient Iranian Studies</em>, Vol. 5, No. 14, 113–122 · Open access</span></li>
-                    <li><span>Soon</span><span>The Iconography of Crescent of Freedom in Manichaean Art (Case Study: III 6278, Museum für Asiatische Kunst)<small>Esmaeil Sangari, Azade Fathipour Dehkordi, Erfaneh Khosravi, Mahmoud Mohammadi</small></span><span><em>Iran and the Caucasus</em>, Brill · Accepted, double-blind peer review</span></li>
+            <div class="cv-group reveal">
+                <h3>Publications <span>( 2 )</span></h3>
+                <ol>
+                    <li><span>2026</span><span>Daštān (Bīnamāzi), the Related Rules in Sasanian and Post-Sasanian Texts<small>Sangari, Davari, Mohammadi, Khosravi</small></span><span>Ancient Iranian Studies, Vol. 5, No. 14 · Open access</span></li>
+                    <li><span>Soon</span><span>The Iconography of Crescent of Freedom in Manichaean Art (Case Study: III 6278, Museum für Asiatische Kunst)<small>Sangari, Fathipour Dehkordi, Khosravi, Mohammadi</small></span><span>Iran and the Caucasus, Brill · Peer reviewed</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Talks &amp; honours</p>
-                <ol class="table">
-                    <li><span>26</span><span>Volunteer Musician — Nowruz: Spring and Renewal Across Cultures</span><span>University of Bologna</span></li>
-                    <li><span>25</span><span>Guest Speaker — “Persian Printed Textiles”</span><span>Adam Mickiewicz University in Poznań</span></li>
-                    <li><span>19</span><span>Master's Entrance Exam — Art Research and Handicrafts</span><span>70th of 3,679 nationally, Iran</span></li>
+            <div class="cv-group reveal">
+                <h3>Talks &amp; honours <span>( 3 )</span></h3>
+                <ol>
+                    <li><span>2026</span><span>Volunteer Musician — Nowruz: Spring and Renewal Across Cultures</span><span>University of Bologna</span></li>
+                    <li><span>2025</span><span>Guest Speaker — “Persian Printed Textiles”</span><span>Adam Mickiewicz University in Poznań</span></li>
+                    <li><span>2019</span><span>Master's Entrance Exam — Art Research and Handicrafts</span><span>70th of 3,679 nationally</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Certificates</p>
-                <ol class="table">
-                    <li><span>24</span><span>Editing for Film and Video Art</span><span>Berlin Summer University of the Arts</span></li>
-                    <li><span>24</span><span>Teaching French as a Foreign Language Today — Advanced</span><span><a href="https://mooc.cavilam.com/certificates/36d7bb6236d94d85b9fbeb66dd9e62d6" target="_blank" rel="noopener noreferrer">CAVILAM – Alliance Française ↗</a></span></li>
-                    <li><span>23</span><span>DELF B2 — Diploma in French Language Studies</span><span>French Ministry of National Education</span></li>
-                    <li><span>22</span><span>Documentary Research</span><span><a href="https://coursera.org/share/5f8105b70cf3ee237d4deaa0bb026e5b" target="_blank" rel="noopener noreferrer">École Polytechnique ↗</a></span></li>
+            <div class="cv-group reveal">
+                <h3>Certificates <span>( 5 )</span></h3>
+                <ol>
+                    <li><span>2024</span><span>Editing for Film and Video Art</span><span>Berlin Summer University of the Arts</span></li>
+                    <li><span>2024</span><span>Teaching French as a Foreign Language Today — Advanced</span><span><a href="https://mooc.cavilam.com/certificates/36d7bb6236d94d85b9fbeb66dd9e62d6" target="_blank" rel="noopener noreferrer">CAVILAM ↗</a></span></li>
+                    <li><span>2023</span><span>DELF B2 — Diploma in French Language Studies</span><span>French Ministry of Education</span></li>
+                    <li><span>2022</span><span>Documentary Research</span><span><a href="https://coursera.org/share/5f8105b70cf3ee237d4deaa0bb026e5b" target="_blank" rel="noopener noreferrer">École Polytechnique ↗</a></span></li>
                     <li><span>—</span><span>Tour Guide — Tourism in Iran and Worldwide</span><span>Ministry of Cultural Heritage, Iran</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Languages</p>
-                <ol class="table">
-                    <li><span>Nat.</span><span>Persian</span><span>Native</span></li>
+            <div class="cv-group reveal">
+                <h3>Languages <span>( 5 )</span></h3>
+                <ol>
+                    <li><span>Native</span><span>Persian</span><span>Mother tongue</span></li>
                     <li><span>C1</span><span>English</span><span>Advanced</span></li>
                     <li><span>B2</span><span>French</span><span>Upper intermediate</span></li>
                     <li><span>A2</span><span>Italian</span><span>Elementary</span></li>
                     <li><span>A1</span><span>Arabic</span><span>Beginner</span></li>
                 </ol>
             </div>
-
-            <div class="group">
-                <p class="label">Skills &amp; interests</p>
-                <ol class="table">
-                    <li><span>01</span><span>Vibe coding (GitHub)</span><span>HTML · WordPress</span></li>
-                    <li><span>02</span><span>Affinity Designer 2 · Adobe InDesign</span><span>Microsoft Office · Pages</span></li>
-                    <li><span>03</span><span>Video editing — VN · CapCut</span><span>Photography — Canon 700D, Sony Alpha 6100</span></li>
-                    <li><span>04</span><span>Music — setar</span><span>Traditional Iranian instrument</span></li>
+            <div class="cv-group reveal">
+                <h3>Skills <span>( 6 )</span></h3>
+                <ol>
+                    <li><span>Code</span><span>Vibe coding (GitHub) · HTML · WordPress</span><span>Web</span></li>
+                    <li><span>Design</span><span>Affinity Designer 2 · Adobe InDesign</span><span>Layout</span></li>
+                    <li><span>Office</span><span>Microsoft Office · Pages</span><span>Documents</span></li>
+                    <li><span>Image</span><span>Video editing — VN · CapCut · Photography</span><span>Canon 700D · Sony Alpha 6100</span></li>
                 </ol>
             </div>
         </section>
 
         <!-- Contact -->
         <section id="contact" class="contact">
-            <h2 class="big">My contact</h2>
-            <div class="contact-row">
-                <a class="field" href="mailto:maahaan.1995@gmail.com"><small>Email</small>maahaan.1995@gmail.com</a>
-                <a class="contact-cta" href="mailto:maahaan.1995@gmail.com">Write to me <span aria-hidden="true">→</span></a>
+            <p class="mono-label">Let's start the conversation</p>
+            <h2 class="huge contact-title">Great exhibitions<br>start with<br>great conversations</h2>
+            <div class="contact-actions">
+                <a class="btn" href="mailto:maahaan.1995@gmail.com"><span class="roll">[ Write to me ]</span></a>
+                <a class="contact-mail" href="mailto:maahaan.1995@gmail.com">maahaan.1995@gmail.com</a>
             </div>
-            <p class="typer" aria-label="Let's talk museums"><span class="typer-text">Let's talk museums</span><span class="caret" aria-hidden="true"></span></p>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="footer-top">
-            <span>Located in Paris, FR</span>
-            <span class="clock">Paris</span>
-        </div>
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/mahmoud-mohammadi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/moarthist" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-        <div class="footer-marquee" aria-hidden="true">
-            <div class="footer-track">
-                <span>Mahmoud Mohammadi, <span class="year">2026</span></span><span>©</span>
-                <span>Mahmoud Mohammadi, <span class="year">2026</span></span><span>©</span>
-                <span>Mahmoud Mohammadi, <span class="year">2026</span></span><span>©</span>
-                <span>Mahmoud Mohammadi, <span class="year">2026</span></span><span>©</span>
+        <div class="footer-grid">
+            <div class="footer-nav">
+                <a href="#about" class="roll">About me</a>
+                <a href="#fields" class="roll">Fields</a>
+                <a href="#cv" class="roll">CV</a>
             </div>
+            <div class="footer-addr">
+                <p class="mono-label">Address:</p>
+                <p>Paris, France</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/mahmoud-mohammadi/" target="_blank" rel="noopener noreferrer" class="roll">LinkedIn</a>
+                <a href="https://github.com/moarthist" target="_blank" rel="noopener noreferrer" class="roll">GitHub</a>
+            </div>
+        </div>
+        <p class="footer-name">Mahmoud Mohammadi</p>
+        <div class="footer-bottom">
+            <span>Paris, France: <span class="clock"></span></span>
+            <span><span class="year">2026</span> All rights reserved. Mahmoud Mohammadi</span>
         </div>
     </footer>
 
