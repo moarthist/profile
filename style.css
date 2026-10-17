@@ -256,7 +256,7 @@ em { font-style: italic; }
     height: 100%;
     object-fit: cover;
     object-position: 50% 20%;
-    filter: grayscale(1) contrast(1.05);
+    filter: grayscale(0.15) contrast(1.02);
     scale: 1.12;
     translate: 0 var(--shift, 0px);
     animation: img-in 1.8s var(--ease) 0.2s both;
