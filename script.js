@@ -3,45 +3,62 @@
     var body = document.body;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Hero load-in, line by line
-    document.querySelectorAll('.hero .line > span').forEach(function (el, i) {
-        el.style.setProperty('--d', (0.1 + i * 0.08) + 's');
+    // Split the headline into letters so they can fade in one by one
+    var headline = document.querySelector('.split-chars');
+    headline.setAttribute('aria-label', headline.textContent.replace(/\s+/g, ' ').trim());
+    var index = 0;
+    (function wrap(node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+            if (child.nodeType === 3) {
+                var frag = document.createDocumentFragment();
+                child.textContent.split(/(\s+)/).forEach(function (part) {
+                    if (!part) return;
+                    if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+                    var word = document.createElement('span');
+                    word.style.whiteSpace = 'nowrap';
+                    word.setAttribute('aria-hidden', 'true');
+                    part.split('').forEach(function (c) {
+                        var ch = document.createElement('span');
+                        ch.className = 'ch';
+                        ch.style.setProperty('--i', index++);
+                        ch.textContent = c;
+                        word.appendChild(ch);
+                    });
+                    frag.appendChild(word);
+                });
+                node.replaceChild(frag, child);
+            } else if (child.nodeType === 1) {
+                wrap(child);
+            }
+        });
+    })(headline);
+
+    requestAnimationFrame(function () {
+        body.classList.add('loaded');
+        headline.classList.add('in');
     });
-    requestAnimationFrame(function () { requestAnimationFrame(function () { body.classList.add('loaded'); }); });
-    setTimeout(function () { body.classList.add('loaded'); }, 800);
+    // Fallback in case frames are throttled (background tabs)
+    setTimeout(function () { body.classList.add('loaded'); headline.classList.add('in'); }, 600);
 
-    // Approach: words light up as you scroll through
-    var approach = document.querySelector('.approach-text');
-    approach.setAttribute('aria-label', approach.textContent.trim());
-    approach.innerHTML = approach.textContent.trim().split(/\s+/).map(function (w) {
-        return '<span class="w" aria-hidden="true">' + w + '</span>';
-    }).join(' ');
-    var words = approach.querySelectorAll('.w');
-
-    function onScroll() {
-        var vh = window.innerHeight;
-        var r = approach.getBoundingClientRect();
-        var p = Math.min(Math.max((vh * 0.85 - r.top) / (r.height + vh * 0.35), 0), 1);
-        var lit = Math.round(p * words.length);
-        words.forEach(function (w, i) { w.classList.toggle('on', i < lit); });
+    // Live date and time in Paris, like a gallery wall clock
+    var clock = document.querySelector('.clock');
+    function tick() {
+        try {
+            var now = new Date();
+            var date = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', day: 'numeric', month: 'short' }).format(now);
+            var time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' }).format(now);
+            clock.textContent = date + ' — ' + time + ' Paris, FR';
+        } catch (e) {}
     }
-    if (reduceMotion) {
-        words.forEach(function (w) { w.classList.add('on'); });
-    } else {
-        var ticking = false;
-        window.addEventListener('scroll', function () {
-            if (!ticking) { requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
-        }, { passive: true });
-        window.addEventListener('resize', onScroll);
-        onScroll();
-    }
+    tick();
+    setInterval(tick, 30000);
 
     // Reveal blocks as they enter, staggering siblings
     var reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && !reduceMotion) {
         var observer = new IntersectionObserver(function (entries) {
             entries.filter(function (e) { return e.isIntersecting; }).forEach(function (e, i) {
-                e.target.style.setProperty('--delay', (i * 0.08) + 's');
+                e.target.style.setProperty('--delay', (i * 0.06) + 's');
                 e.target.classList.add('in');
                 observer.unobserve(e.target);
             });
@@ -51,33 +68,25 @@
         reveals.forEach(function (el) { el.classList.add('in'); });
     }
 
-    // Underline the nav item of the section in view
+    // Highlight the nav item of the section in view
     var links = {};
     document.querySelectorAll('.nav a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
-    function setActive(id) { Object.keys(links).forEach(function (k) { links[k].classList.toggle('active', k === id); }); }
+    function setActive(id) {
+        Object.keys(links).forEach(function (k) { links[k].classList.toggle('active', k === id); });
+    }
     if ('IntersectionObserver' in window) {
         var navObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+            entries.forEach(function (e) { if (e.isIntersecting && links[e.target.id]) setActive(e.target.id); });
         }, { rootMargin: '-45% 0px -50% 0px' });
-        ['fields', 'about', 'cv', 'contact'].forEach(function (id) { navObserver.observe(document.getElementById(id)); });
+        Object.keys(links).forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el && id !== 'top') navObserver.observe(el);
+        });
     }
-    var fields = document.getElementById('fields');
+    var info = document.getElementById('info');
     window.addEventListener('scroll', function () {
-        if (window.scrollY < fields.offsetTop - window.innerHeight / 2) setActive('top');
+        if (window.scrollY < info.offsetTop - window.innerHeight / 2) setActive('top');
     }, { passive: true });
 
-    // Live Paris time and UTC offset in the footer
-    var clock = document.querySelector('.clock');
-    var zone = document.querySelector('.zone');
-    function tick() {
-        try {
-            var now = new Date();
-            clock.textContent = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' }).format(now);
-            var part = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', timeZoneName: 'shortOffset' })
-                .formatToParts(now).filter(function (p) { return p.type === 'timeZoneName'; })[0];
-            if (part) zone.textContent = part.value.replace('GMT', 'UTC');
-        } catch (e) {}
-    }
-    tick();
-    setInterval(tick, 15000);
+    document.querySelector('.year').textContent = new Date().getFullYear();
 })();
