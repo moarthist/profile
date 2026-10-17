@@ -161,14 +161,14 @@ em { font-style: italic; }
 .card h3 { margin-top: 48px; color: var(--ink); font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; }
 .card-sub { margin: 6px 0 14px; color: var(--ink); font-size: 14px; font-weight: 500; }
 
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .tile a { display: block; }
 .tile-art {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     padding: 24px;
     border-radius: var(--radius);
     background: var(--surface);
