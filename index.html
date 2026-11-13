@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahmoud Mohammadi — Art Historian &amp; Translator</title>
     <meta name="description" content="Mahmoud Mohammadi — art historian and translator based in Paris. Museology, scenography and Persian visual culture.">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#f7f3ea">
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Mahmoud Mohammadi — Art Historian &amp; Translator">
     <meta property="og:description" content="Art history, told through objects.">
@@ -20,6 +20,12 @@
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="star8" viewBox="0 0 100 100"><rect x="18" y="18" width="64" height="64"/><rect x="18" y="18" width="64" height="64" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="13"/></symbol>
+    </svg>
+    <div class="curtain" aria-hidden="true"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg></div>
+    <div class="progress-bar" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"></div>
     <!-- ===== Header (fixed, inverts over dark) ===== -->
     <header class="header">
         <div class="header-inner">
@@ -91,9 +97,13 @@
                         <div><dt>Fields</dt><dd>Museology, scenography</dd></div>
                     </dl>
                 </div>
-                <figure class="plate hero-plate" style="--ratio: 3 / 4" data-reveal="plate" data-delay="200">
-                    <img src="portrait-studio.jpg" width="1000" height="1000" alt="Mahmoud Mohammadi — portrait" fetchpriority="high">
-                </figure>
+                <div class="hero-visual">
+                    <div class="hero-star spin"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg></div>
+                    <div class="hero-star-2 spin"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg></div>
+                    <figure class="plate hero-plate" style="--ratio: 3 / 4" data-reveal="plate" data-delay="200">
+                        <img src="portrait-studio.jpg" width="1000" height="1000" alt="Mahmoud Mohammadi — portrait" fetchpriority="high">
+                    </figure>
+                </div>
                 <div class="scroll-cue" data-reveal="fade" data-delay="1400"><span>Scroll to enter</span><i></i></div>
             </div>
         </section>
@@ -107,6 +117,11 @@
             </div>
         </section>
 
+        <!-- ===== Marquee ===== -->
+        <div class="marquee rule-dashed" aria-hidden="true">
+            <div class="marquee-track"><span>Museology</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Scenography</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Persian Studies</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Translation</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Mediation</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Research</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Museology</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Scenography</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Persian Studies</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Translation</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Mediation</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg><span>Research</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg></div>
+        </div>
+
         <!-- ===== Fields (zig-zag plates) ===== -->
         <section id="fields" class="section rule-dashed anchor">
             <div class="container">
@@ -116,7 +131,7 @@
                 <div class="works grid-12">
                     <article class="work">
                         <figure data-reveal="plate">
-                            <div class="plate type-plate parallax" style="--ratio: 3 / 2"><span class="type-num">01</span><span class="type-word">Museology</span></div>
+                            <div class="plate type-plate tone-lapis parallax" style="--ratio: 3 / 2"><span class="type-num">01</span><span class="type-word">Museology</span></div>
                             <figcaption class="rule-dashed">
                                 <div><h3>Museology</h3><p>Visual Arts, Museology and Curatorship — University of Bologna</p></div>
                                 <span class="year">2023–26</span>
@@ -125,7 +140,7 @@
                     </article>
                     <article class="work">
                         <figure data-reveal="plate">
-                            <div class="plate type-plate dark parallax" style="--ratio: 3 / 2"><span class="type-num">02</span><span class="type-word">Scenography</span></div>
+                            <div class="plate type-plate tone-night parallax" style="--ratio: 3 / 2"><span class="type-num">02</span><span class="type-word">Scenography</span></div>
                             <figcaption class="rule-dashed">
                                 <div><h3>Scenography</h3><p>Art mediation — 22,48 m² Gallery, Romainville · Grand 8 Festival, Paris</p></div>
                                 <span class="year">2025</span>
@@ -134,7 +149,7 @@
                     </article>
                     <article class="work">
                         <figure data-reveal="plate">
-                            <div class="plate type-plate parallax" style="--ratio: 3 / 4"><span class="type-num">03</span><span class="type-word">Persian<br>Studies</span></div>
+                            <div class="plate type-plate tone-turq parallax" style="--ratio: 3 / 4"><span class="type-num">03</span><span class="type-word">Persian<br>Studies</span></div>
                             <figcaption class="rule-dashed">
                                 <div><h3>Persian Studies</h3><p>Sasanian texts, Manichaean iconography, Persian printed textiles</p></div>
                                 <span class="year">2018–</span>
@@ -143,7 +158,7 @@
                     </article>
                     <article class="work">
                         <figure data-reveal="plate">
-                            <div class="plate type-plate dark parallax" style="--ratio: 3 / 2"><span class="type-num">04</span><span class="type-word">Translation</span></div>
+                            <div class="plate type-plate tone-saffron parallax" style="--ratio: 3 / 2"><span class="type-num">04</span><span class="type-word">Translation</span></div>
                             <figcaption class="rule-dashed">
                                 <div><h3>Translation</h3><p>Persian, English, French, Italian and Arabic</p></div>
                                 <span class="year">2015–</span>
@@ -156,6 +171,7 @@
 
         <!-- ===== Pinned CTA #1 ===== -->
         <section class="pinned rule-dashed">
+            <div class="pinned-star spin"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg></div>
             <div class="container grid-12 pinned-grid">
                 <div class="pinned-copy">
                     <p class="eyebrow dark" data-reveal="fade"><span class="eyebrow-line"></span>Research</p>
@@ -302,7 +318,7 @@
                 </div>
                 <div class="pubs">
                     <article data-reveal="fadeUp" data-delay="0">
-                        <div class="lift"><div class="plate type-plate" style="--ratio: 3 / 2"><span class="type-num">Ancient Iranian Studies</span><span class="type-word"><i>Daštān</i></span></div></div>
+                        <div class="lift"><div class="plate type-plate tone-turq" style="--ratio: 3 / 2"><span class="type-num">Ancient Iranian Studies</span><span class="type-word"><i>Daštān</i></span></div></div>
                         <div class="pub-info rule-dashed">
                             <div>
                                 <h3>Daštān (Bīnamāzi), the Related Rules in Sasanian and Post-Sasanian Texts</h3>
@@ -313,7 +329,7 @@
                         </div>
                     </article>
                     <article data-reveal="fadeUp" data-delay="90">
-                        <div class="lift"><div class="plate type-plate dark" style="--ratio: 3 / 2"><span class="type-num">Iran and the Caucasus · Brill</span><span class="type-word"><i>Crescent of Freedom</i></span></div></div>
+                        <div class="lift"><div class="plate type-plate tone-lapis" style="--ratio: 3 / 2"><span class="type-num">Iran and the Caucasus · Brill</span><span class="type-word"><i>Crescent of Freedom</i></span></div></div>
                         <div class="pub-info rule-dashed">
                             <div>
                                 <h3>The Iconography of Crescent of Freedom in Manichaean Art (Case Study: III 6278, Museum für Asiatische Kunst)</h3>
@@ -324,7 +340,7 @@
                         </div>
                     </article>
                     <article data-reveal="fadeUp" data-delay="0">
-                        <div class="lift"><div class="plate type-plate dark" style="--ratio: 3 / 2"><span class="type-num">Guest speaker · Poznań</span><span class="type-word"><i>Persian Printed Textiles</i></span></div></div>
+                        <div class="lift"><div class="plate type-plate tone-night" style="--ratio: 3 / 2"><span class="type-num">Guest speaker · Poznań</span><span class="type-word"><i>Persian Printed Textiles</i></span></div></div>
                         <div class="pub-info rule-dashed">
                             <div>
                                 <h3>“Persian Printed Textiles”</h3>
@@ -335,7 +351,7 @@
                         </div>
                     </article>
                     <article data-reveal="fadeUp" data-delay="90">
-                        <div class="lift"><div class="plate type-plate" style="--ratio: 3 / 2"><span class="type-num">University of Bologna</span><span class="type-word"><i>Nowruz</i></span></div></div>
+                        <div class="lift"><div class="plate type-plate tone-saffron" style="--ratio: 3 / 2"><span class="type-num">University of Bologna</span><span class="type-word"><i>Nowruz</i></span></div></div>
                         <div class="pub-info rule-dashed">
                             <div>
                                 <h3>Nowruz: Spring and Renewal Across Cultures</h3>
@@ -351,6 +367,7 @@
 
         <!-- ===== Pinned CTA #2 (contact) ===== -->
         <section id="contact" class="pinned centered rule-dashed anchor">
+            <div class="pinned-star spin"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><use href="#star8"/></svg></div>
             <div class="container">
                 <div class="pinned-copy">
                     <p class="eyebrow dark" data-reveal="fade"><span class="eyebrow-line"></span>Begin</p>

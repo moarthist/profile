@@ -86,7 +86,8 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
             io.unobserve(e.target);
         });
     }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
-    reveals.forEach((el) => io.observe(el));
+    // Start once the intro curtain begins to lift
+    setTimeout(() => reveals.forEach((el) => io.observe(el)), 650);
 }
 
 /* ---------- Parallax on field plates ---------- */
@@ -190,3 +191,79 @@ document.querySelectorAll('.cur-year').forEach((el) => { el.textContent = new Da
 
 // Hover springs only on fine pointers; CSS handles the motion, this just tags the root.
 if (finePointer()) root.classList.add('fine');
+
+
+/* ---------- Intro curtain ---------- */
+const lift = () => document.body.classList.add('ready');
+if (reduceMotion) lift();
+else { window.addEventListener('load', () => setTimeout(lift, 350)); setTimeout(lift, 1800); }
+
+/* ---------- Scroll-driven extras: progress, turning stars, marquee lean, footer word ---------- */
+const giant = document.querySelector('.giant');
+let lastY = window.scrollY;
+let skew = 0;
+function scrollFx() {
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    root.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
+    if (reduceMotion) return;
+    root.style.setProperty('--rot', (y * 0.06).toFixed(2));
+    if (giant) {
+        const box = giant.getBoundingClientRect();
+        const prog = Math.min(Math.max((window.innerHeight - box.top) / (window.innerHeight + box.height), 0), 1);
+        giant.style.setProperty('--gx', ((0.5 - prog) * 8).toFixed(2) + 'vw');
+    }
+}
+window.addEventListener('scroll', scrollFx, { passive: true });
+window.addEventListener('resize', scrollFx);
+scrollFx();
+
+/* ---------- Pointer extras (fine pointers only) ---------- */
+if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    // Cursor dot that grows over links and plates
+    const cursor = document.querySelector('.cursor');
+    window.addEventListener('pointermove', (e) => {
+        cursor.style.setProperty('--cx', e.clientX + 'px');
+        cursor.style.setProperty('--cy', e.clientY + 'px');
+        const t = e.target;
+        cursor.classList.toggle('is-plate', !!t.closest('.plate'));
+        cursor.classList.toggle('is-link', !t.closest('.plate') && !!t.closest('a, button'));
+    }, { passive: true });
+    document.addEventListener('pointerleave', () => cursor.style.setProperty('--cx', '-100px'));
+
+    // Magnetic buttons
+    document.querySelectorAll('.cta, .menu-btn').forEach((btn) => {
+        btn.addEventListener('pointermove', (e) => {
+            const r = btn.getBoundingClientRect();
+            const dx = (e.clientX - (r.left + r.width / 2)) * 0.25;
+            const dy = (e.clientY - (r.top + r.height / 2)) * 0.35;
+            btn.style.transform = `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px)`;
+        });
+        btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+    });
+
+    // Portrait tilts toward the pointer
+    const visual = document.querySelector('.hero-visual');
+    const plate = document.querySelector('.hero-plate');
+    if (visual && plate) {
+        visual.addEventListener('pointermove', (e) => {
+            const r = visual.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            plate.style.setProperty('--ty', (px * 8).toFixed(2) + 'deg');
+            plate.style.setProperty('--tx', (py * -8).toFixed(2) + 'deg');
+        });
+        visual.addEventListener('pointerleave', () => { plate.style.setProperty('--tx', '0deg'); plate.style.setProperty('--ty', '0deg'); });
+    }
+
+    // Marquee leans with scroll speed, then settles
+    const track = document.querySelector('.marquee-track');
+    (function lean() {
+        const y = window.scrollY;
+        const target = Math.max(-12, Math.min(12, (y - lastY) * 0.35));
+        lastY = y;
+        skew += (target - skew) * 0.12;
+        if (track) track.style.setProperty('--skew', skew.toFixed(2) + 'deg');
+        requestAnimationFrame(lean);
+    })();
+}
