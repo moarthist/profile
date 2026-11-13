@@ -438,3 +438,16 @@ a:hover > .arrow { transform: translateX(0.25rem); }
     .cv-thumb { width: 100%; max-width: 20rem; margin-top: 0.5rem; }
     .cv-grid.wide { grid-template-columns: 1fr; }
 }
+
+/* Thesis project card inside the CV */
+.cv-project { display: grid; grid-template-columns: 17rem minmax(0, 1fr); gap: 1.25rem; align-items: center; margin-top: 1.25rem; padding: 0.75rem; max-width: 46rem; border: 1px solid var(--surface-soft); background: #fff; transition: border-color 250ms ease, translate 500ms var(--spring); }
+.cv-project:hover { border-color: var(--accent); translate: 0 -0.2rem; }
+.cv-project figure { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-soft); }
+.cv-project img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.9s var(--spring); }
+.cv-project:hover img { scale: 1.06; }
+.cv-project span { display: grid; gap: 0.35rem; }
+.cv-project em { font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #0aa7b5; }
+.cv-project b { font-family: var(--font-display); font-weight: 700; font-size: 1.375rem; line-height: 1.05; text-transform: uppercase; }
+.cv-project i { font-size: 0.8125rem; line-height: 1.45; color: rgb(9 10 11 / 0.7); }
+.cv-project u { margin-top: 0.25rem; white-space: nowrap; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+@media (max-width: 639px) { .cv-project { grid-template-columns: 1fr; } }
