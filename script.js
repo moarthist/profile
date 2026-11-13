@@ -1,5 +1,5 @@
 // Mahmoud Mohammadi — portfolio & CV
-// Veil, text reveals, sticky stack, contour fields, chequered seams, route map, career rail.
+// Veil, text reveals, sticky stack, chequered seams, route map, career rail.
 
 const root = document.documentElement;
 const body = document.body;
@@ -91,91 +91,6 @@ io($$('.row'), '0% 0% -25% 0%', mark);
 io($$('.cal'), '0% 0% -20% 0%', mark);
 $$('.cal li').forEach((li, i) => li.style.setProperty('--i', i));
 $$('.sheet nav a').forEach((a, i) => a.style.setProperty('--i', i));
-
-/* ---------- Contour fields (marching squares over a four-sine field) ---------- */
-const LINE_SCALE = 3.8, LINE_COUNT = 2.5, WAVE_AMOUNT = 0.37, WAVE_SPEED = 1.66, CELLS = 96;
-const field = (x, y, t) => {
-    let f = Math.sin(x * 1.0 + t * 0.6) * 0.5;
-    f += Math.sin(y * 0.85 - t * 0.45) * 0.45;
-    f += Math.sin((x + y) * 0.65 + t * 0.35) * 0.35;
-    f += Math.sin((x - y) * 0.95 - t * 0.55) * 0.25;
-    return f * 0.5 + 0.5;
-};
-const contours = $$('canvas[data-contours]').map((canvas) => ({
-    canvas, ctx: canvas.getContext('2d'), colour: token(canvas.dataset.contours),
-    alpha: Number(canvas.dataset.alpha || 0.85), visible: false, hero: !!canvas.closest('.hero'),
-}));
-const drawContours = (c, now) => {
-    const { canvas, ctx } = c;
-    const width = canvas.clientWidth, height = canvas.clientHeight;
-    if (!width || !height) return;
-    const ratio = Math.min(devicePixelRatio || 1, 2);
-    if (canvas.width !== Math.round(width * ratio) || canvas.height !== Math.round(height * ratio)) {
-        canvas.width = Math.round(width * ratio);
-        canvas.height = Math.round(height * ratio);
-    }
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    ctx.clearRect(0, 0, width, height);
-    const t = (now / 1000) * WAVE_SPEED;
-    const cols = width >= height ? CELLS : Math.max(8, Math.round((CELLS * width) / height));
-    const rows = Math.max(8, Math.round((cols * height) / width));
-    const stepX = width / cols, stepY = height / rows, aspect = width / height;
-    const values = new Float32Array((cols + 1) * (rows + 1));
-    for (let j = 0; j <= rows; j += 1) for (let i = 0; i <= cols; i += 1) {
-        const nx = ((i / cols) * 2 - 1) * aspect * LINE_SCALE;
-        const ny = ((j / rows) * 2 - 1) * LINE_SCALE;
-        const qx = nx + Math.sin(ny * 0.8 + t * 0.7) * WAVE_AMOUNT;
-        const qy = ny + Math.cos(nx * 0.7 - t * 0.6) * WAVE_AMOUNT;
-        values[j * (cols + 1) + i] = field(qx, qy, t) * LINE_COUNT;
-    }
-    ctx.strokeStyle = c.colour; ctx.lineWidth = 1.2; ctx.globalAlpha = c.alpha; ctx.beginPath();
-    const seg = (p, q) => { ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); };
-    for (let level = 0.5; level < LINE_COUNT; level += 1) {
-        for (let j = 0; j < rows; j += 1) for (let i = 0; i < cols; i += 1) {
-            const a = values[j * (cols + 1) + i], b = values[j * (cols + 1) + i + 1];
-            const cc = values[(j + 1) * (cols + 1) + i + 1], d = values[(j + 1) * (cols + 1) + i];
-            const index = (a > level ? 8 : 0) | (b > level ? 4 : 0) | (cc > level ? 2 : 0) | (d > level ? 1 : 0);
-            if (index === 0 || index === 15) continue;
-            const x0 = i * stepX, y0 = j * stepY;
-            const top = [x0 + stepX * ((level - a) / (b - a)), y0];
-            const right = [x0 + stepX, y0 + stepY * ((level - b) / (cc - b))];
-            const bottom = [x0 + stepX * ((level - d) / (cc - d)), y0 + stepY];
-            const left = [x0, y0 + stepY * ((level - a) / (d - a))];
-            switch (index) {
-                case 1: case 14: seg(left, bottom); break;
-                case 2: case 13: seg(bottom, right); break;
-                case 3: case 12: seg(left, right); break;
-                case 4: case 11: seg(top, right); break;
-                case 6: case 9: seg(top, bottom); break;
-                case 7: case 8: seg(left, top); break;
-                case 5: seg(left, top); seg(bottom, right); break;
-                case 10: seg(left, bottom); seg(top, right); break;
-            }
-        }
-    }
-    ctx.stroke(); ctx.globalAlpha = 1;
-};
-if ('IntersectionObserver' in window) {
-    const o = new IntersectionObserver((entries) => entries.forEach((e) => {
-        const c = contours.find((k) => k.canvas === e.target);
-        if (c) c.visible = e.isIntersecting;
-    }));
-    contours.forEach((c) => o.observe(c.canvas));
-} else contours.forEach((c) => { c.visible = true; });
-let lastContour = 0;
-const contourLoop = (now) => {
-    if (now - lastContour > 24 && !document.hidden) {
-        lastContour = now;
-        contours.forEach((c) => {
-            if (!c.visible) return;
-            if (c.hero && window.scrollY > innerHeight * 1.15) return;
-            drawContours(c, now);
-        });
-    }
-    if (!reduce) requestAnimationFrame(contourLoop);
-};
-requestAnimationFrame(contourLoop);
-if (reduce) setTimeout(() => contours.forEach((c) => drawContours(c, 0)), 100);
 
 /* ---------- Chequered seams ---------- */
 const CELL = 24, SOLID_UNTIL = 0.16, LIFT = 2, ACCENT_SHARE = 0.06;
