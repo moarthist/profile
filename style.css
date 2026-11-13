@@ -451,3 +451,8 @@ a:hover > .arrow { transform: translateX(0.25rem); }
 .cv-project i { font-size: 0.8125rem; line-height: 1.45; color: rgb(9 10 11 / 0.7); }
 .cv-project u { margin-top: 0.25rem; white-space: nowrap; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
 @media (max-width: 639px) { .cv-project { grid-template-columns: 1fr; } }
+
+/* Timeline: the thesis plate links out */
+.plate-fill a { position: absolute; inset: 0; display: block; }
+.tl-link { display: inline-block; margin-top: 0.6rem; pointer-events: auto; font-weight: 700; color: var(--accent); background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 1px; padding-bottom: 2px; transition: background-size 0.4s var(--spring); }
+.tl-link:hover { background-size: 0 1px; background-position: 100% 100%; }
