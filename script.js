@@ -392,7 +392,6 @@ const rail = $('.rail');
 const railRun = $('.rail-run'), railMark = $('.rail-mark');
 const REST = 2387;
 const rows = $$('.row');
-const fieldEl = $('.field');
 const update = () => {
     const vh = innerHeight || 1;
 
@@ -430,11 +429,6 @@ const update = () => {
             row.style.setProperty('--slot', (1 - clamp((vh - b.top) / (vh / 2))).toFixed(4));
         });
 
-        // The field portrait drifts up, never down.
-        const fb = fieldEl.getBoundingClientRect();
-        if (fb.bottom > 0 && fb.top < vh) {
-            fieldEl.style.setProperty('--fp', clamp((vh - fb.top) / (vh + fb.height)).toFixed(4));
-        }
     }
 };
 let ticking = false;
